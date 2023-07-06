@@ -12,7 +12,7 @@ const List = (props) => {
           <li key={repo.id} className="list">
             <p className="repo-text">{repo.id} </p>
             <p className="repo-description">{repo.name}</p>
-            <img src={repo.image} alt="Car" />
+            <img src={repo.image} alt="Car" width={300}/>
             <p className="repo-description">{repo.price}</p>
           </li>
         );

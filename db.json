@@ -1,0 +1,19 @@
+{
+  "profile": {
+    "name": "typicode"
+  },
+  "images": [
+    {
+      "id": 0,
+      "name": "BMW-Z5",
+      "image": "/BMW-Z5.jpeg",
+      "price": 50000
+    },
+    {
+      "id": 1,
+      "name": "BMW-Z1",
+      "image": "/BMW-Z1.jpeg",
+      "price": 24639
+    }
+  ]
+}

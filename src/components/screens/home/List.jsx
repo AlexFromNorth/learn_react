@@ -1,22 +1,23 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
+import Listitem from "./Listitem";
+import { render } from "react-dom";
 const List = (props) => {
   const { repos } = props;
-  console.log(repos);
-  if (!repos || repos.length === 0) return <p>No repos, sorry</p>;
+  //   console.log(repos);
+  if (!repos || repos.length === 0) return <p>There are not cars</p>;
+
+  const [filter, useFilter] = useState(30000);
+
+  const carsFilter = useMemo(() => repos.filter((e) => e.price > filter), [filter]);
+
+  console.log('renderer')
+
   return (
     <ul>
       <h2 className="list-head">Available Public Repositories</h2>
-      {repos.map((repo) => {
-        // console.log(repo)
-        return (
-          <li key={repo.id} className="list">
-            <p className="repo-text">{repo.id} </p>
-            <p className="repo-description">{repo.name}</p>
-            <img src={repo.image} alt="Car" width={300}/>
-            <p className="repo-description">{repo.price}</p>
-          </li>
-        );
-      })}
+      {carsFilter.map((repo) => (
+        <Listitem key={repo.id} car={repo} />
+      ))}
     </ul>
   );
 };

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
+const clearData = { name: "", image: "", price: "" };
+
 const CreateCarForm = ({ setAppState }) => {
   const [data, setData] = useState({ name: "", image: "", price: "" });
-  console.log(data)
 
   const CreateCar = (e) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ const CreateCarForm = ({ setAppState }) => {
         ...prev.repos,
       ],
     }));
-    setData({name: '',image: '', price: ''})
+    setData(clearData);
   };
 
   return (
@@ -31,13 +32,17 @@ const CreateCarForm = ({ setAppState }) => {
       <input
         type="text"
         placeholder="Price"
-        onChange={(e) => setData((prev) => ({ ...prev, price: +e.target.value }))}
+        onChange={(e) =>
+          setData((prev) => ({ ...prev, price: +e.target.value }))
+        }
         value={data.price}
       />
       <input
         type="text"
         placeholder="Image"
-        onChange={(e) => setData((prev) => ({ ...prev, image: e.target.value }))}
+        onChange={(e) =>
+          setData((prev) => ({ ...prev, image: e.target.value }))
+        }
         value={data.image}
       />
 

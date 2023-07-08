@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import List from "./listItem/List";
 import WithListLoading from "./listItem/WithListLoading";
 import CreateCarForm from "./create_car_form/CreateCarForm";
+import axios from "axios";
+import { carService } from "../../../services/car.service";
 
 function Home() {
   const ListLoading = WithListLoading(List);
@@ -10,22 +12,24 @@ function Home() {
     repos: null,
   });
 
-
   useEffect(() => {
     setAppState({ loading: true });
-    const apiUrl = `http://localhost:4300/images`;
-    fetch(apiUrl)
-    .then((res) => res.json())
-    .then((repos) => {
-      setAppState({ loading: false, repos: repos });
-    });
+    const axiosData = async () => {
+      const data = await carService.getAll()
+          setAppState({ loading: false, repos: data });
+    };
+    axiosData()
   }, [setAppState]);
-  
+
+  useEffect(() => {
+    console.log("hey");
+  }, [appState]);
+
   return (
     <div>
       <h1>Cars catalog</h1>
       {/* <App/> */}
-      <CreateCarForm setAppState={setAppState}/>
+      <CreateCarForm setAppState={setAppState} />
       <div className="App">
         <div className="container">
           <h1>Cars</h1>

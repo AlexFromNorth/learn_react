@@ -1,45 +1,35 @@
 import React, { useState } from "react";
 
-const CreateCarForm = ({setAppState}) => {
+const CreateCarForm = ({ setAppState }) => {
   // console.log(props.props.setAppState);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
 
   const CreateCar = (e) => {
+    // {
+    //   "id": 0,
+    //   "name": "BMW-Z5",
+    //   "image": "/BMW-Z5.jpeg",
+    //   "price": 50000
+    // },
     e.preventDefault();
     // console.log(name);
     // console.log(price);
     // console.log(image);
-    // setAppState(prev=> console.log(prev))
-    setAppState({repos: [
-      {
-        "id": 0,
-        "name": "BMW-Z5",
-        "image": "/BMW-Z5.jpeg",
-        "price": 50000
-      },
-      {
-        "id": 0,
-        "name": "BMW-Z5",
-        "image": "/BMW-Z5.jpeg",
-        "price": 50000
-      },
-      {
-        "id": 0,
-        "name": "BMW-Z5",
-        "image": "/BMW-Z5.jpeg",
-        "price": 50000
-      },
-      {
-        "id": 1,
-        "name": "BMW-Z1",
-        "image": "/BMW-Z1.jpeg",
-        "price": 24639
-      }
-    ]});
-    // setAppState(prev=> console.log(prev))
-      };
+    setAppState((prev) => ({
+      loading: false,
+      repos: [
+        ...prev.repos,
+        {
+          id: prev.repos.length,
+          name: name,
+          image: image,
+          price: price,
+        },
+      ],
+    }));
+  };
 
   return (
     <form>
@@ -52,7 +42,7 @@ const CreateCarForm = ({setAppState}) => {
       <input
         type="text"
         placeholder="Price"
-        onChange={(e) => setPrice(e.target.value)}
+        onChange={(e) => setPrice(+e.target.value)}
         value={price}
       />
       <input

@@ -1,34 +1,23 @@
 import React, { useState } from "react";
 
 const CreateCarForm = ({ setAppState }) => {
-  // console.log(props.props.setAppState);
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
+  const [data, setData] = useState({ name: "", image: "", price: "" });
+  console.log(data)
 
   const CreateCar = (e) => {
-    // {
-    //   "id": 0,
-    //   "name": "BMW-Z5",
-    //   "image": "/BMW-Z5.jpeg",
-    //   "price": 50000
-    // },
     e.preventDefault();
-    // console.log(name);
-    // console.log(price);
-    // console.log(image);
+
     setAppState((prev) => ({
       loading: false,
       repos: [
-        ...prev.repos,
         {
           id: prev.repos.length,
-          name: name,
-          image: image,
-          price: price,
+          ...data,
         },
+        ...prev.repos,
       ],
     }));
+    setData({name: '',image: '', price: ''})
   };
 
   return (
@@ -36,20 +25,20 @@ const CreateCarForm = ({ setAppState }) => {
       <input
         type="text"
         placeholder="Name"
-        onChange={(e) => setName(e.target.value)}
-        value={name}
+        onChange={(e) => setData((prev) => ({ ...prev, name: e.target.value }))}
+        value={data.name}
       />
       <input
         type="text"
         placeholder="Price"
-        onChange={(e) => setPrice(+e.target.value)}
-        value={price}
+        onChange={(e) => setData((prev) => ({ ...prev, price: +e.target.value }))}
+        value={data.price}
       />
       <input
         type="text"
         placeholder="Image"
-        onChange={(e) => setImage(e.target.value)}
-        value={image}
+        onChange={(e) => setData((prev) => ({ ...prev, image: e.target.value }))}
+        value={data.image}
       />
 
       <button onClick={CreateCar}>Create</button>

@@ -5,7 +5,7 @@ const List = (props) => {
   const { repos } = props;
   if (!repos || repos.length === 0) return <p>There are not cars</p>;
 
-  const [filter, useFilter] = useState(30000);
+  const [filter, useFilter] = useState(10000);
   const carsFilter = useMemo(
     () => repos.filter((e) => e.price > filter),
     [filter]

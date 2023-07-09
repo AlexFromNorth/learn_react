@@ -20,10 +20,6 @@ function Home() {
     axiosData()
   }, [setAppState]);
 
-  useEffect(() => {
-    console.log("hey");
-  }, [appState]);
-
   return (
     <div>
       <h1>Cars catalog</h1>

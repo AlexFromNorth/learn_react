@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Listitem = ({car}) => {
     return (
@@ -12,7 +13,7 @@ const Listitem = ({car}) => {
               currency: "USD",
             }).format(car.price)}
           </p>
-          <button>Read more</button>
+          <Link to={`/car/${car.id}`}>Read more</Link>
         </li>
       );
 }

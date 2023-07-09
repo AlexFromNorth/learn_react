@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { carService } from "../../../services/car.service";
 import ListItem from "../home/listItem/ListItem";
 
@@ -19,6 +19,7 @@ const CarDetail = () => {
 
   return <div>
     CarDetail {id}
+    <Link to='/'>Back</Link>
     <ListItem car={car}/>
   </div>;
 };

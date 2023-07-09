@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import List from "./listItem/List";
 import WithListLoading from "./listItem/WithListLoading";
 import CreateCarForm from "./create_car_form/CreateCarForm";
-import axios from "axios";
 import { carService } from "../../../services/car.service";
 
 function Home() {

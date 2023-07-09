@@ -5,6 +5,7 @@ export const carService = {
   async getAll() {
     const data = await axios.get(apiUrl);
 
+    console.log(data.data)
     return data.data
   },
 };

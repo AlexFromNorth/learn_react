@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { carService } from "../../../services/car.service";
 import ListItem from "../home/listItem/ListItem";
+import { AuthContext } from "../../../providers/AuthProvider";
+import { withAuth } from "../../../HOC/withAuth";
 
 const CarDetail = () => {
   const {id} = useParams()
@@ -17,6 +19,8 @@ const CarDetail = () => {
 
   if(!car.name) return <p>Loading...</p>
 
+
+
   return <div>
     CarDetail {id}
     <Link to='/'>Back</Link>
@@ -24,4 +28,4 @@ const CarDetail = () => {
   </div>;
 };
 
-export default CarDetail;
+export default withAuth(CarDetail);

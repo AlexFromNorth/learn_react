@@ -28,7 +28,7 @@ function Home() {
   return (
     <div>
       <h1>Cars catalog</h1>
-      {user ? (
+      {!!user ? (
         <div>
           <h2>Welcome, {user.name}</h2>
           <button onClick={() => {setUser(null); setName(null) }}>LogOut</button>

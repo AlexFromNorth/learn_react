@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import List from "./listItem/List";
 import WithListLoading from "./listItem/WithListLoading";
 import CreateCarForm from "./create_car_form/CreateCarForm";
 import { carService } from "../../../services/car.service";
 import VideoPlayer from "./video_player/VideoPlayer";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 function Home() {
   const ListLoading = WithListLoading(List);
@@ -15,16 +16,35 @@ function Home() {
   useEffect(() => {
     setAppState({ loading: true });
     const axiosData = async () => {
-      const data = await carService.getAll()
-          setAppState({ loading: false, repos: data });
+      const data = await carService.getAll();
+      setAppState({ loading: false, repos: data });
     };
-    axiosData()
+    axiosData();
   }, [setAppState]);
+
+  const { user, setUser } = useContext(AuthContext);
+  const [name, setName] = useState(null);
 
   return (
     <div>
       <h1>Cars catalog</h1>
-      <VideoPlayer/>
+      {user ? (
+        <div>
+          <h2>Welcome, {user.name}</h2>
+          <button onClick={() => {setUser(null); setName(null) }}>LogOut</button>
+        </div>
+      ) : (
+        <div>
+          <input
+            type="text"
+            placeholder="Plz enter your name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <button onClick={() => setUser({ name: name })}>LogIn</button>
+        </div>
+      )}
+      <VideoPlayer />
       {/* <App/> */}
       <CreateCarForm setAppState={setAppState} />
       <div className="App">

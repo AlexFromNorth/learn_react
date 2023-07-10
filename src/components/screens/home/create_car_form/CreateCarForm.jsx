@@ -1,13 +1,18 @@
-import React, { useState } from "react";
-
-const clearData = { name: "", image: "", price: "" };
+import React from "react";
+import { useForm } from "react-hook-form";
 
 const CreateCarForm = ({ setAppState }) => {
-  const [data, setData] = useState({ name: "", image: "", price: "" });
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: "onChange",
+  });
 
-  const CreateCar = (e) => {
-    e.preventDefault();
-
+  const CreateCar = (data) => {
+    console.log(data);
     setAppState((prev) => ({
       loading: false,
       repos: [
@@ -18,35 +23,34 @@ const CreateCarForm = ({ setAppState }) => {
         ...prev.repos,
       ],
     }));
-    setData(clearData);
+    reset();
   };
-
+  console.log(errors);
   return (
-    <form>
+    <form onSubmit={handleSubmit(CreateCar)}>
       <input
         type="text"
+        {...register("name", { required: "Name is required!" })}
         placeholder="Name"
-        onChange={(e) => setData((prev) => ({ ...prev, name: e.target.value }))}
-        value={data.name}
       />
+      {errors?.name?.message && <p>{errors?.name?.message}</p>}
+      {/* {errors?.name?.message.length < 3 && (
+        <p>The name must be longer than 3 letters</p>
+      )} */}
       <input
         type="text"
+        {...register("price", { required: "Price is required!" })}
         placeholder="Price"
-        onChange={(e) =>
-          setData((prev) => ({ ...prev, price: +e.target.value }))
-        }
-        value={data.price}
       />
+      {errors?.price?.message && <p>{errors?.price?.message}</p>}
       <input
         type="text"
+        {...register("image", { required: "Image is required!" })}
         placeholder="Image"
-        onChange={(e) =>
-          setData((prev) => ({ ...prev, image: e.target.value }))
-        }
-        value={data.image}
       />
+      {errors?.image?.message && <p>{errors?.image?.message}</p>}
 
-      <button onClick={CreateCar}>Create</button>
+      <button>Create</button>
     </form>
   );
 };

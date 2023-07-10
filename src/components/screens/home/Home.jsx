@@ -3,6 +3,7 @@ import List from "./listItem/List";
 import WithListLoading from "./listItem/WithListLoading";
 import CreateCarForm from "./create_car_form/CreateCarForm";
 import { carService } from "../../../services/car.service";
+import VideoPlayer from "./video_player/VideoPlayer";
 
 function Home() {
   const ListLoading = WithListLoading(List);
@@ -23,6 +24,7 @@ function Home() {
   return (
     <div>
       <h1>Cars catalog</h1>
+      <VideoPlayer/>
       {/* <App/> */}
       <CreateCarForm setAppState={setAppState} />
       <div className="App">

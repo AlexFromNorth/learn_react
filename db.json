@@ -14,6 +14,18 @@
       "name": "BMW-Z1",
       "image": "/BMW-Z1.jpeg",
       "price": 24639
+    },
+    {
+      "id": 2,
+      "name": "BMW-Z5",
+      "image": "/BMW-Z5.jpeg",
+      "price": 50000
+    },
+    {
+      "id": 3,
+      "name": "BMW-Z1",
+      "image": "/BMW-Z1.jpeg",
+      "price": 24639
     }
   ]
 }

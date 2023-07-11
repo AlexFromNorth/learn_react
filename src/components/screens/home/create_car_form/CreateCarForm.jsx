@@ -32,9 +32,6 @@ const CreateCarForm = ({ setAppState }) => {
         placeholder="Name"
       />
       {errors?.name?.message && <p>{errors?.name?.message}</p>}
-      {/* {errors?.name?.message.length < 3 && (
-        <p>The name must be longer than 3 letters</p>
-      )} */}
       <input
         type="text"
         {...register("price", { required: "Price is required!" })}

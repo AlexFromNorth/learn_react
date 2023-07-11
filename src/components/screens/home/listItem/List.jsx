@@ -12,8 +12,23 @@ const List = (props) => {
 
   return (
     <>
+      <div>
+        <h3>Added cars filter</h3>
+        <div className="flex">
+          <input
+            type="range"
+            name="volume"
+            min="0"
+            max="100000"
+            value={filter}
+            onChange={(e) => {
+              useFilter(e.target.value);
+            }}
+          />
+          <span>${filter}</span>
+        </div>
+      </div>
       <ul>
-        <h2 className="list-head">Available Public Repositories</h2>
         {carsFilter.map((repo) => (
           <Listitem key={repo.id} car={repo} />
         ))}

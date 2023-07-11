@@ -12,13 +12,22 @@ const VideoPlayer = ({ src, ...props }) => {
   };
 
   return (
-    <div>
-      <button onClick={handlerPlay}>Play</button>
-      <button onClick={handlerPause}>Pause</button>
-      <video width="750" height="500" controls ref={ref}>
-        <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" type="video/mp4" />
-      </video>
-    </div>
+    <>
+      <div className="video">
+        <video width="750" height="500" controls ref={ref}>
+          <source
+            src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+      <div>
+        <button onClick={handlerPlay} className="m30">
+          Play
+        </button>
+        <button onClick={handlerPause}>Pause</button>
+      </div>
+    </>
   );
 };
 

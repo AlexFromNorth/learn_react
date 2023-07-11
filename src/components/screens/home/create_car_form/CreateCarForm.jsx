@@ -12,7 +12,6 @@ const CreateCarForm = ({ setAppState }) => {
   });
 
   const CreateCar = (data) => {
-    console.log(data);
     setAppState((prev) => ({
       loading: false,
       repos: [
@@ -25,7 +24,6 @@ const CreateCarForm = ({ setAppState }) => {
     }));
     reset();
   };
-  console.log(errors);
   return (
     <form onSubmit={handleSubmit(CreateCar)}>
       <input

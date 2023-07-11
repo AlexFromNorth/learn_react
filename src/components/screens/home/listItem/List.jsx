@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from "react";
 import Listitem from "./Listitem";
-import { render } from "react-dom";
 const List = (props) => {
   const { repos } = props;
   if (!repos || repos.length === 0) return <p>There are not cars</p>;

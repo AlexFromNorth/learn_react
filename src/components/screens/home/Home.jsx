@@ -28,14 +28,18 @@ function Home() {
   return (
     <div>
       <h1>Cars catalog</h1>
+      <br/>
       {!!user ? (
         <div>
           <h2>Welcome, {user.name}</h2>
+          <br/>
+
           <button onClick={() => {setUser(null); setName(null) }}>LogOut</button>
         </div>
       ) : (
         <div>
           <input
+          className="m40"
             type="text"
             placeholder="Plz enter your name"
             value={name}
@@ -45,7 +49,6 @@ function Home() {
         </div>
       )}
       <VideoPlayer />
-      {/* <App/> */}
       <CreateCarForm setAppState={setAppState} />
       <div className="App">
         <div className="container">
